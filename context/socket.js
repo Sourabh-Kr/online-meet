@@ -7,6 +7,7 @@ export const useSocket = () => {
   const socket = useContext(SocketContext);
   return socket;
 };
+
 export const SocketProvider = (props) => {
   const { children } = props;
   const [socket, setSocket] = useState(null);
@@ -21,6 +22,7 @@ export const SocketProvider = (props) => {
     await fetch("/api/socket");
   });
 
+  console.log("socket", socket?.id);
   return (
     <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
   );
